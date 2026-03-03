@@ -1,3 +1,8 @@
 <Solution>
-  <Project Path="App.Web/App.Web.csproj" Id="8c87e2e8-7eae-46cd-9c55-78fec8c2a0d7" />
+  <Folder Name="/src/">
+    <Project Path="App.Application/App.Application.csproj" Id="a8ae41a5-702f-48d4-abf2-2d0316d85f04" />
+    <Project Path="App.Domain/App.Domain.csproj" Id="e3dd7767-3b1e-4151-8d1d-3fd155c2bf53" />
+    <Project Path="App.Infrastructure/App.Infrastructure.csproj" Id="ec10e7dc-9052-46d4-bfb1-1877dca50b98" />
+    <Project Path="App.Web/App.Web.csproj" Id="8c87e2e8-7eae-46cd-9c55-78fec8c2a0d7" />
+  </Folder>
 </Solution>

@@ -1,3 +1,5 @@
+using App.Application;
+using App.Infrastructure;
 using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,7 +17,13 @@ builder.Services.AddCors(options =>
 });
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+ 
+
+builder.Services.AddControllers();
+
+builder.Services.AddApplication()
+    .AddInfrastructure(builder.Configuration);
+
 
 await using var app = builder.Build();
 
