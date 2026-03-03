@@ -9,7 +9,7 @@ await using var app = builder.Build();
 
 
 
-app.UseHttpsRedirection();
+ app.UseHttpsRedirection();
 
 var browserPath = Path.Combine(builder.Environment.WebRootPath, "browser");
 
@@ -27,7 +27,7 @@ app.UseStaticFiles(new StaticFileOptions
 
 app.UseRouting();
 
-// app.UseAuthentication();
+// app.UseAuthentication(); /* TEMPORARILY COMMENTED FOR DEVELOPMENT PURPOSE */
 app.UseAuthorization();
 
 
@@ -71,3 +71,8 @@ if (!app.Environment.IsDevelopment())
 
 
 await app.RunAsync();
+
+/**
+ *  latest chat https://share.google/aimode/vtzOhThF53fuziprm
+ * 
+ */
