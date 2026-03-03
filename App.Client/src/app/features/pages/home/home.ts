@@ -29,11 +29,26 @@ export class Home implements OnInit, AfterViewInit{
       error:(err) => {
         console.log('Error:', err);
       }
-    })
+    });
   }
 
   ngAfterViewInit(): void {
      
+  }
+
+  loadMore(){
+    this.productRepository.loadMore().pipe(
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe({
+      next:(res) => {
+        if(res){
+          this.products.update(current => [...current, ...res]);
+        }
+      },
+      error:(err) => {
+        console.log('Error:', err);
+      }
+    });
   }
 
 }

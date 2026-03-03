@@ -18,5 +18,17 @@ namespace App.Web.ApiControllers
             };
             return Ok(products);
         }
+
+        [HttpGet("more")]
+        public async Task<IActionResult> More()
+        {
+            var products = new[]
+           {
+                new { Id = 4, Name = "Product D", Price = 20.99 },
+                new { Id = 5, Name = "Product E", Price = 29.99 },
+                new { Id = 6, Name = "Product F", Price = 7.49 }
+            };
+            return Ok(products);
+        }
     }
 }

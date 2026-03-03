@@ -2,6 +2,18 @@ using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularDev",
+        policy =>
+        {
+            // Be exact: no trailing slash
+            policy.WithOrigins("http://127.0.0.1:5271/", "http://localhost:5271", "https://apptest.runasp.net", "http://apptest.runasp.net")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -9,7 +21,7 @@ await using var app = builder.Build();
 
 
 
- app.UseHttpsRedirection();
+ //app.UseHttpsRedirection(); /* USE THIS IF YOU ALREADY HAVE SSL */
 
 var browserPath = Path.Combine(builder.Environment.WebRootPath, "browser");
 
@@ -26,6 +38,8 @@ app.UseStaticFiles(new StaticFileOptions
 });
 
 app.UseRouting();
+
+app.UseCors("AllowAngularDev");
 
 // app.UseAuthentication(); /* TEMPORARILY COMMENTED FOR DEVELOPMENT PURPOSE */
 app.UseAuthorization();
@@ -73,6 +87,6 @@ if (!app.Environment.IsDevelopment())
 await app.RunAsync();
 
 /**
- *  latest chat https://share.google/aimode/vtzOhThF53fuziprm
+ *  latest chat https://share.google/aimode/xI3pNQEJxIK1Nf6ZV
  * 
  */
