@@ -51,8 +51,7 @@ app.MapControllers();
 if (!app.Environment.IsDevelopment())
 {
     // In Production (MonsterASP), if no API or File is found, send index.html
-    app.MapFallback(async context =>
-    {
+   
         app.MapFallback(async context =>
         {
             var path = context.Request.Path.Value?.Trim('/') ?? "";
@@ -69,8 +68,7 @@ if (!app.Environment.IsDevelopment())
                 // Fallback to the main index inside /browser/
                 await context.Response.SendFileAsync(Path.Combine(browserPath, "index.html"));
             }
-        });
-    });
+        }); 
 }
 //else
 //{
