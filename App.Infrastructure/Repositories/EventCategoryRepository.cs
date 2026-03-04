@@ -14,6 +14,7 @@ namespace App.Infrastructure.Repositories
         {
             var result = await QueryAsync<EventCategory>("GetEventCategories", null, commandType: CommandType.StoredProcedure);
             return [..result];
+
         }
     }
 }
