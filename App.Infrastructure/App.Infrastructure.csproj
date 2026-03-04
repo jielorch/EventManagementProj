@@ -9,11 +9,13 @@
   <ItemGroup>
     <None Remove="SQL\0_Schemas.sql" />
     <None Remove="SQL\1_Default_Values.sql" />
+    <None Remove="SQL\5_Stored_Procedures.sql" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="SQL\0_Schemas.sql" />
     <EmbeddedResource Include="SQL\1_Default_Values.sql" />
+    <EmbeddedResource Include="SQL\5_Stored_Procedures.sql" />
   </ItemGroup>
 
   <ItemGroup>
