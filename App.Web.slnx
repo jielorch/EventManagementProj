@@ -1,3 +1,13 @@
 <Solution>
-  <Project Path="App.Web/App.Web.csproj" Id="8c87e2e8-7eae-46cd-9c55-78fec8c2a0d7" />
+  <Folder Name="/src/">
+    <Project Path="App.Application/App.Application.csproj" Id="a8ae41a5-702f-48d4-abf2-2d0316d85f04" />
+    <Project Path="App.Domain/App.Domain.csproj" Id="e3dd7767-3b1e-4151-8d1d-3fd155c2bf53" />
+    <Project Path="App.Infrastructure/App.Infrastructure.csproj" Id="ec10e7dc-9052-46d4-bfb1-1877dca50b98" />
+    <Project Path="App.Web/App.Web.csproj" Id="8c87e2e8-7eae-46cd-9c55-78fec8c2a0d7" />
+  </Folder>
+  <Folder Name="/src/Test/">
+    <Project Path="App.ApplicationTest/App.ApplicationTest.csproj" Id="f11fe1fc-85bb-4e98-8b50-902d6b96e16e" />
+    <Project Path="App.InfrastructureTest/App.InfrastructureTest.csproj" Id="8380bb90-7310-4f7e-8e88-148de9c25c01" />
+    <Project Path="App.PresentationTest/App.PresentationTest.csproj" Id="6accb1db-62d9-4dc6-b42a-994f83242bf1" />
+  </Folder>
 </Solution>

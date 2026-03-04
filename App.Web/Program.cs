@@ -1,15 +1,35 @@
+using App.Application;
+using App.Infrastructure;
 using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularDev",
+        policy =>
+        {
+            // Be exact: no trailing slash
+            policy.WithOrigins("http://127.0.0.1:5271/", "http://localhost:5271", "https://apptest.runasp.net", "http://apptest.runasp.net")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+ 
+
+builder.Services.AddControllers();
+
+builder.Services.AddApplication()
+    .AddInfrastructure(builder.Configuration);
+
 
 await using var app = builder.Build();
 
 
 
-app.UseHttpsRedirection();
+ //app.UseHttpsRedirection(); /* USE THIS IF YOU ALREADY HAVE SSL */
 
 var browserPath = Path.Combine(builder.Environment.WebRootPath, "browser");
 
@@ -27,7 +47,9 @@ app.UseStaticFiles(new StaticFileOptions
 
 app.UseRouting();
 
-// app.UseAuthentication();
+app.UseCors("AllowAngularDev");
+
+// app.UseAuthentication(); /* TEMPORARILY COMMENTED FOR DEVELOPMENT PURPOSE */
 app.UseAuthorization();
 
 
@@ -37,8 +59,7 @@ app.MapControllers();
 if (!app.Environment.IsDevelopment())
 {
     // In Production (MonsterASP), if no API or File is found, send index.html
-    app.MapFallback(async context =>
-    {
+   
         app.MapFallback(async context =>
         {
             var path = context.Request.Path.Value?.Trim('/') ?? "";
@@ -55,8 +76,7 @@ if (!app.Environment.IsDevelopment())
                 // Fallback to the main index inside /browser/
                 await context.Response.SendFileAsync(Path.Combine(browserPath, "index.html"));
             }
-        });
-    });
+        }); 
 }
 //else
 //{
@@ -71,3 +91,8 @@ if (!app.Environment.IsDevelopment())
 
 
 await app.RunAsync();
+
+/**
+ *  latest chat https://share.google/aimode/xI3pNQEJxIK1Nf6ZV
+ * 
+ */
