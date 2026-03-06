@@ -9,7 +9,7 @@ import { Product } from '../../../core/models/product';
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-export class Home implements OnInit, AfterViewInit{
+export class Home implements OnInit{
 
 
   productRepository = inject(ProductRepository);
@@ -31,10 +31,7 @@ export class Home implements OnInit, AfterViewInit{
       }
     });
   }
-
-  ngAfterViewInit(): void {
-     
-  }
+ 
 
   loadMore(){
     this.productRepository.loadMore().pipe(

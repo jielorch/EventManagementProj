@@ -10,7 +10,11 @@ builder.Services.AddCors(options =>
         policy =>
         {
             // Be exact: no trailing slash
-            policy.WithOrigins("http://127.0.0.1:5271/", "http://localhost:5271", "https://apptest.runasp.net", "http://apptest.runasp.net")
+            policy.WithOrigins("http://127.0.0.1:5271",
+                                "https://127.0.0.1:7247",
+                                "http://localhost:5271",
+                                "https://apptest.runasp.net",
+                                "http://apptest.runasp.net")
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });
