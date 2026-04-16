@@ -12,8 +12,7 @@ using System.Text;
 namespace App.Infrastructure.Repositories
 {
     public class EventCategoryRepository(IAppDbContext context) : RepositoryBase<EventCategory>(context), IEventCategoryRepository
-    {
-        private readonly IAppDbContext _context = context;
+    { 
         public async Task<IReadOnlyList<EventCategory>> GetAllAsync()
         {
             if (_context.Database.IsSqlServer())
